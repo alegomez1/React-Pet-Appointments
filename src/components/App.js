@@ -3,8 +3,6 @@ import "../css/App.css";
 import AddAppointments from "../components/AddAppointments";
 import ListAppointments from "../components/ListAppointments";
 import SearchAppointments from "../components/SearchAppointments";
-import { tsConstructorType } from "@babel/types";
-
 
 class App extends Component{
 
@@ -14,6 +12,17 @@ class App extends Component{
       myName: 'Alex'
     }
   }
+
+  componentDidMount(){
+    fetch('./data.json')
+    .then(response => response.json())
+    .then(result => {
+      const appts = result.map(item => {
+        return item
+      })
+    })
+  }
+
   render(){
   return (
     <main className="page bg-white" id="petratings">
